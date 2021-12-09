@@ -7,59 +7,74 @@ from selenium.webdriver.common.keys import Keys
 
 
 class Post:
+    """
+    Класс для удобства вывода поста в строковый формат
+    """
     def __init__(self, text, commentators):
         self.text = text
         self.commentators = commentators
 
     def __str__(self):
-        return f"-= Пост =-\n{self.text}\n" \
-               f"-= ==== =-\n-= Коментаторы =-:\n" + "\n".join(str(item) for item in self.commentators) + \
+        return f"-= Post =-\n{self.text}\n" \
+               f"-= ==== =-\n-= Comments =-:\n" + "\n".join(str(item) for item in self.commentators) + \
                "\n-= ==== =-\n"
 
 
 class Page:
+    """
+    Класс для хранения сохраненной страницы поста
+    """
     def __init__(self, code):
         self.code = code
 
 
 def save_data(browser):
+    """
+    Сохраняет html-код поста
+    :param browser: наш браузер
+    :return: возвращает сохраненную страницу
+    """
     page = Page(BeautifulSoup(browser.page_source, "html.parser"))
     return page
 
 
 def get_data(url):
+    """
+    Основной блок управления браузером
+    :param url: ссылка на страницу
+    """
     _service = Service(r'chromedriver.exe')
     _options = webdriver.ChromeOptions()
     browser = webdriver.Chrome(service=_service, options=_options)
     posts = []
     pages = []
-    action = webdriver.common.action_chains.ActionChains(browser)
     y_old = 500
 
     try:
         browser.get(url=url)
         sleep(2.5)
         html = browser.find_element("tag name", 'html')
-        with open("selenium.html", "w", encoding="utf-8") as file:
-            file.write(BeautifulSoup(browser.page_source, "lxml").prettify())
 
+        # Цикл for i in range(10) и дальнейшее использование i в качестве индекса
+        # - костыль, правильнее перебирать все прогруженные страницы с самого начала,
+        # чтобы не допустить пропуска постов, или не попасть повторно в какой либо пост
         for i in range(10):
-            posts = browser.find_elements("xpath", "//div[@class='css-1dbjc4n r-1igl3o0 r-qklmqi r-1adg3ll r-1ny4l3l']")
+            posts = browser.find_elements("xpath", "//div[@class='css-1dbjc4n r-k4xj1c r-18u37iz r-1wtj0ep']")
+            print(posts)
 
             y = posts[i].location.get('y')
 
-            for _ in range((y - y_old) // 36):
+            # Эмпирическим путем определил, что одно нажатие клавиши вниз пролистывает страницу вниз
+            # Примерно на 37 пикселей
+            for _ in range((y - y_old) // 37):
                 html.send_keys(Keys.DOWN)
                 sleep(0.2)
-
+            print(f"Пост {i}, {y}, {y_old}")
             y_old = y
-            posts = browser.find_elements("xpath", "//div[@class='css-1dbjc4n r-1igl3o0 r-qklmqi r-1adg3ll r-1ny4l3l']")
 
-            action.move_to_element_with_offset(posts[i], 1, 60)
-            sleep(0.5)
+            sleep(1)
 
-            action.click()
-            action.perform()
+            posts[i].click()
 
             sleep(2.5)
 
@@ -72,25 +87,32 @@ def get_data(url):
 
             sleep(0.5)
 
-        for item in pages:
-            posts.append(parser(item))
-
-        posts = posts[1:]
-        for post in posts:
-            print(str(post))
-
     except Exception as ex:
         print(ex)
+        print("Произошла ошибка: пост находится за пределами экрана/миссклик по посту")
 
     finally:
+        for item in pages:
+            posts.append(parser(item))
+        posts = posts[1:]
+        with open("output.txt", "w") as file:
+            for post in posts:
+                file.write(str(post))
+
         browser.close()
         browser.quit()
 
 
 def parser(page):
+    """
+    Ищет необходимые данные на странице
+    :param page: сохранненная страница
+    :return: Возвращает текст поста и ссылки на первых трех комментаторов
+    """
     text = ""
 
     user_profiles = []
+    right_text = ""
     soup = page.code.find_all("article", {"data-testid": "tweet"})
 
     for item in soup:
@@ -108,6 +130,5 @@ def parser(page):
     return Post(post_text, user_profiles)
 
 
-get_data("https://twitter.com/elonmusk")
-
-
+if __name__ == '__main__':
+    get_data("https://twitter.com/elonmusk")
