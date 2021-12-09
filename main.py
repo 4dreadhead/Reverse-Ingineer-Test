@@ -15,7 +15,7 @@ class Post:
         self.commentators = commentators
 
     def __str__(self):
-        return f"-= Post =-\n{self.text}\n" \
+        return f"\n-= Post =-\n{self.text}\n" \
                f"-= ==== =-\n-= Comments =-:\n" + "\n".join(str(item) for item in self.commentators) + \
                "\n-= ==== =-\n"
 
