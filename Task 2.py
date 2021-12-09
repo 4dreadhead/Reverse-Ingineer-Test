@@ -1,6 +1,5 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.common.by import By
 from time import sleep
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.keys import Keys
@@ -46,6 +45,7 @@ def get_data(url):
     _service = Service(r'chromedriver.exe')
     _options = webdriver.ChromeOptions()
     browser = webdriver.Chrome(service=_service, options=_options)
+    browser.maximize_window()
     posts = []
     pages = []
     y_old = 500
@@ -66,31 +66,27 @@ def get_data(url):
 
         for i in range(10):
             posts = browser.find_elements("xpath", "//div[@class='css-1dbjc4n r-k4xj1c r-18u37iz r-1wtj0ep']")
-            print(posts)
-
             y = posts[i].location.get('y')
 
+            # Пролистываем страницу вниз с помощью клавиши
             # Эмпирическим путем определил, что одно нажатие клавиши вниз пролистывает страницу вниз
             # Примерно на 37 пикселей
             for _ in range((y - y_old) // 37):
                 html.send_keys(Keys.DOWN)
                 sleep(0.2)
-            print(f"Пост {i}, {y}, {y_old}")
             y_old = y
-
             sleep(1)
 
+            # Переходим к посту
             posts[i].click()
-
             sleep(2.5)
 
+            # Сохраняем пост и выходим обратно в ленту
             pages.append(save_data(browser))
             browser.execute_script("window.history.go(-1)")
-
             sleep(0.5)
 
             html = browser.find_element("tag name", 'html')
-
             sleep(0.5)
 
     except Exception as ex:
@@ -98,6 +94,7 @@ def get_data(url):
         print("Произошла ошибка: пост находится за пределами экрана/миссклик по посту")
 
     finally:
+        # Все успешно сохраненные посты выводятся в файл output.txt
         for item in pages:
             posts.append(parser(item))
         with open("output.txt", "w") as file:
@@ -120,6 +117,7 @@ def parser(page):
     right_text = ""
     soup = page.code.find_all("article", {"data-testid": "tweet"})
 
+    # Сохраняем ссылки комментаторов и текст поста
     for item in soup:
         href = item.find("a", href=True)
         if str(href['href']) != '/elonmusk':
