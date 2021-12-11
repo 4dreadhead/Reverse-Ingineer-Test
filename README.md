@@ -11,11 +11,11 @@
 
 1) cd "Полный путь до папки с проектом"
 
-2)venv\scripts\activate.bat
+2) venv\scripts\activate.bat
 
-3)venv\scripts\python.exe "Task 1.py"
+3) venv\scripts\python.exe "Task 1.py"
 
-4)venv\scripts\python.exe "Task 2.py"
+4) venv\scripts\python.exe "Task 2.py"
 
 -------------------------------------------
 
