@@ -1,0 +1,3 @@
+selenium
+selenium_stealth
+bs4
