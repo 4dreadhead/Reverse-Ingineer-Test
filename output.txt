@@ -1,93 +1,178 @@
-<selenium.webdriver.remote.webelement.WebElement (session="d919bf3b4a4c28871ec03a29e366f7a9", element="5cb8bc5b-b8b9-40fe-b38a-66f3db691f1f")><selenium.webdriver.remote.webelement.WebElement (session="d919bf3b4a4c28871ec03a29e366f7a9", element="72535a8e-74dc-449e-888c-865558953a1a")><selenium.webdriver.remote.webelement.WebElement (session="d919bf3b4a4c28871ec03a29e366f7a9", element="17dbe065-a6bd-4de1-b039-9d56eddbea87")><selenium.webdriver.remote.webelement.WebElement (session="d919bf3b4a4c28871ec03a29e366f7a9", element="ac045a07-47fa-4547-a6a3-a99932178148")><selenium.webdriver.remote.webelement.WebElement (session="d919bf3b4a4c28871ec03a29e366f7a9", element="2da3d244-e4bc-47e6-8766-8d1af44a7b92")><selenium.webdriver.remote.webelement.WebElement (session="d919bf3b4a4c28871ec03a29e366f7a9", element="2056366b-7338-465b-bdb8-b3b3caebd7ee")><selenium.webdriver.remote.webelement.WebElement (session="d919bf3b4a4c28871ec03a29e366f7a9", element="42f47a21-0564-47e1-9ab7-08fe54407fc6")><selenium.webdriver.remote.webelement.WebElement (session="d919bf3b4a4c28871ec03a29e366f7a9", element="24afb43d-6304-49ff-ab97-b3b4a64d97ec")><selenium.webdriver.remote.webelement.WebElement (session="d919bf3b4a4c28871ec03a29e366f7a9", element="92a9bc13-f886-4048-a55d-1866e304821f")><selenium.webdriver.remote.webelement.WebElement (session="d919bf3b4a4c28871ec03a29e366f7a9", element="162bbdc1-3498-4ddc-8bf8-82efc343777a")><selenium.webdriver.remote.webelement.WebElement (session="d919bf3b4a4c28871ec03a29e366f7a9", element="44c8fab1-afcd-4c54-8613-db8da8c6939a")><selenium.webdriver.remote.webelement.WebElement (session="d919bf3b4a4c28871ec03a29e366f7a9", element="99566bcf-d8fa-4945-a841-a584eff8d916")><selenium.webdriver.remote.webelement.WebElement (session="d919bf3b4a4c28871ec03a29e366f7a9", element="c64ded8a-3055-40e6-9419-13697fcb3b5a")><selenium.webdriver.remote.webelement.WebElement (session="d919bf3b4a4c28871ec03a29e366f7a9", element="e9a4b443-678f-4bb6-962d-636385382208")>
--= Post =-
- episode with Dan Carlin. Hope you like it.
--= ==== =-
--= Comments =-:
-https://twitter.com/dequavisondeck
-https://twitter.com/Helloimmorgan
-https://twitter.com/Jaynedodg
--= ==== =-
-
--= Post =-
-“No better friend, no worse enemy”
--= ==== =-
--= Comments =-:
-https://twitter.com/_StephanieMyers
-https://twitter.com/VxzD500
-https://twitter.com/A7imd
--= ==== =-
-
--= Post =-
-Mars & Cars
--= ==== =-
--= Comments =-:
-https://twitter.com/ChanceHMiller
-https://twitter.com/OfficialSPGB
-https://twitter.com/ChaseBlessing
--= ==== =-
-
--= Post =-
-Wow, only three weeks to 2022! 
-What will 2032 will be like? 
-Seems so futuristic!
-Will we be on Mars?
--= ==== =-
--= Comments =-:
-https://twitter.com/ProfesorTurkmen
-https://twitter.com/Michael_MacRae
-https://twitter.com/jordon_hodges
--= ==== =-
-
--= Post =-
-Hahaha … ?1
--= ==== =-
--= Comments =-:
-https://twitter.com/jessily07
-https://twitter.com/MOHANRA37783451
-https://twitter.com/Deepaksiva17
--= ==== =-
-
--= Post =-
-thinking of quitting my jobs & becoming an influencer full-time wdyt
--= ==== =-
--= Comments =-:
-https://twitter.com/SherijenningsUn
-https://twitter.com/HotHeadCandles
-https://twitter.com/Sadcrib
--= ==== =-
-
--= Post =-
-@elonmusk
--= ==== =-
--= Comments =-:
-https://twitter.com/KennyOrellana9
-https://twitter.com/KyleSherman
-https://twitter.com/unusual_whales
--= ==== =-
-
--= Post =-
-NASA's Launch Services Program
--= ==== =-
--= Comments =-:
-https://twitter.com/wyche89
-https://twitter.com/ItsDogeCoin
-https://twitter.com/engineers_feed
--= ==== =-
-
--= Post =-
-NASA's Launch Services Program
--= ==== =-
--= Comments =-:
-https://twitter.com/SpaceX
-https://twitter.com/star95011
-https://twitter.com/Bhoopen09877798
--= ==== =-
-
--= Post =-
-Unless susceptible to extreme natural disasters, nuclear power plants should not be shut down
--= ==== =-
--= Comments =-:
-https://twitter.com/lqdchkn
-https://twitter.com/yaronsamid
-https://twitter.com/Cokedupoptions
--= ==== =-
+{
+    "Post 1": {
+        "Text": "@elonmusk",
+        "Commentators": {
+            "Commentator 0": "https://twitter.com/samir",
+            "Commentator 1": "https://twitter.com/raymond_saint",
+            "Commentator 2": "https://twitter.com/A7imd"
+        },
+        "Link": "https://twitter.com/elonmusk/status/1470157804304572420"
+    },
+    "Post 2": {
+        "Text": "@elonmusk",
+        "Commentators": {
+            "Commentator 0": "https://twitter.com/Ziyaggy",
+            "Commentator 1": "https://twitter.com/Scorrdo",
+            "Commentator 2": "https://twitter.com/ahmadtariq07"
+        },
+        "Link": "https://twitter.com/elonmusk/status/1470012460509937679"
+    },
+    "Post 3": {
+        "Text": "Sine qua non non",
+        "Commentators": {
+            "Commentator 0": "https://twitter.com/TKCnohitokoto",
+            "Commentator 1": "https://twitter.com/TKCnohitokoto",
+            "Commentator 2": "https://twitter.com/theorzur"
+        },
+        "Link": "https://twitter.com/elonmusk/status/1470007920846852104"
+    },
+    "Post 4": {
+        "Text": "Sorry",
+        "Commentators": {
+            "Commentator 0": "https://twitter.com/TKCnohitokoto",
+            "Commentator 1": "https://twitter.com/tdmaneCFC",
+            "Commentator 2": "https://twitter.com/denationalise"
+        },
+        "Link": "https://twitter.com/elonmusk/status/1470007410521780226"
+    },
+    "Post 5": {
+        "Text": "10:44 AM \u00b7 12 \u0434\u0435\u043a. 2021 \u0433.",
+        "Commentators": {
+            "Commentator 0": "https://twitter.com/Helloimmorgan",
+            "Commentator 1": "https://twitter.com/redban",
+            "Commentator 2": "https://twitter.com/Helloimmorgan"
+        },
+        "Link": "https://twitter.com/elonmusk/status/1469875780901609472"
+    },
+    "Post 6": {
+        "Text": "\u201cNo better friend, no worse enemy\u201d",
+        "Commentators": {
+            "Commentator 0": "https://twitter.com/_StephanieMyers",
+            "Commentator 1": "https://twitter.com/VxzD500",
+            "Commentator 2": "https://twitter.com/A7imd"
+        },
+        "Link": "https://twitter.com/elonmusk/status/1469762144786919427"
+    },
+    "Post 7": {
+        "Text": "Mars & Cars",
+        "Commentators": {
+            "Commentator 0": "https://twitter.com/ChanceHMiller",
+            "Commentator 1": "https://twitter.com/OfficialSPGB",
+            "Commentator 2": "https://twitter.com/ChaseBlessing"
+        },
+        "Link": "https://twitter.com/elonmusk/status/1469364444782280707"
+    },
+    "Post 8": {
+        "Text": "Wow, only three weeks to 2022! \nWhat will 2032 will be like? \nSeems so futuristic!\nWill we be on Mars?",
+        "Commentators": {
+            "Commentator 0": "https://twitter.com/ProfesorTurkmen",
+            "Commentator 1": "https://twitter.com/Michael_MacRae",
+            "Commentator 2": "https://twitter.com/jordon_hodges"
+        },
+        "Link": "https://twitter.com/elonmusk/status/1469358667023667202"
+    },
+    "Post 9": {
+        "Text": "Hahaha \u2026 ?1",
+        "Commentators": {
+            "Commentator 0": "https://twitter.com/jessily07",
+            "Commentator 1": "https://twitter.com/MOHANRA37783451",
+            "Commentator 2": "https://twitter.com/Deepaksiva17"
+        },
+        "Link": "https://twitter.com/elonmusk/status/1469356039694864384"
+    },
+    "Post 10": {
+        "Text": "thinking of quitting my jobs & becoming an influencer full-time wdyt",
+        "Commentators": {
+            "Commentator 0": "https://twitter.com/SherijenningsUn",
+            "Commentator 1": "https://twitter.com/HotHeadCandles",
+            "Commentator 2": "https://twitter.com/_juho_lee_"
+        },
+        "Link": "https://twitter.com/elonmusk/status/1469153995428085762"
+    },
+    "Post 11": {
+        "Text": "@elonmusk",
+        "Commentators": {},
+        "Link": "https://twitter.com/elonmusk/status/1469137649269153799"
+    },
+    "Post 12": {
+        "Text": "NASA's Launch Services Program",
+        "Commentators": {
+            "Commentator 0": "https://twitter.com/wyche89",
+            "Commentator 1": "https://twitter.com/ItsDogeCoin",
+            "Commentator 2": "https://twitter.com/engineers_feed"
+        },
+        "Link": "https://twitter.com/SpaceX/status/1468965191387779086"
+    },
+    "Post 13": {
+        "Text": "NASA's Launch Services Program",
+        "Commentators": {
+            "Commentator 0": "https://twitter.com/SpaceX",
+            "Commentator 1": "https://twitter.com/Bhoopen09877798",
+            "Commentator 2": "https://twitter.com/astrajamz"
+        },
+        "Link": "https://twitter.com/SpaceX/status/1468701923914104834"
+    },
+    "Post 14": {
+        "Text": "Unless susceptible to extreme natural disasters, nuclear power plants should not be shut down",
+        "Commentators": {
+            "Commentator 0": "https://twitter.com/lqdchkn",
+            "Commentator 1": "https://twitter.com/yaronsamid",
+            "Commentator 2": "https://twitter.com/Cokedupoptions"
+        },
+        "Link": "https://twitter.com/elonmusk/status/1468689628161052674"
+    },
+    "Post 15": {
+        "Text": "Nothing is more permanent than a \u201ctemporary\u201d government program",
+        "Commentators": {
+            "Commentator 0": "https://twitter.com/HeyDBsup",
+            "Commentator 1": "https://twitter.com/mythicaltime_",
+            "Commentator 2": "https://twitter.com/DogeVice"
+        },
+        "Link": "https://twitter.com/elonmusk/status/1468685877970935809"
+    },
+    "Post 16": {
+        "Text": "There is a lot of accounting trickery in this bill that isn\u2019t being disclosed to the public",
+        "Commentators": {
+            "Commentator 0": "https://twitter.com/pumpkinflop",
+            "Commentator 1": "https://twitter.com/efraser77",
+            "Commentator 2": "https://twitter.com/markeasterbrook"
+        },
+        "Link": "https://twitter.com/elonmusk/status/1468685044239814666"
+    },
+    "Post 17": {
+        "Text": "PWBM estimates that H.R. 5376, the Build Back Better Act, would increase spending by $2.1 trillion over the 10-year budget window while increasing revenue by $1.8 trillion, for a 10-year deficit of...",
+        "Commentators": {
+            "Commentator 0": "https://twitter.com/A7imd",
+            "Commentator 1": "https://twitter.com/dogeofficialceo",
+            "Commentator 2": "https://twitter.com/merket"
+        },
+        "Link": "https://twitter.com/elonmusk/status/1468684576407101440"
+    },
+    "Post 18": {
+        "Text": "@elonmusk",
+        "Commentators": {
+            "Commentator 0": "https://twitter.com/ChrisKuball",
+            "Commentator 1": "https://twitter.com/jaynonamebe",
+            "Commentator 2": "https://twitter.com/samir"
+        },
+        "Link": "https://twitter.com/elonmusk/status/1468631917138522115"
+    },
+    "Post 19": {
+        "Text": "A background in \u201cAI\u201d is not needed, just exceptional skill in software or computer design",
+        "Commentators": {
+            "Commentator 0": "https://twitter.com/Cokedupoptions",
+            "Commentator 1": "https://twitter.com/syggles",
+            "Commentator 2": "https://twitter.com/Doge_France"
+        },
+        "Link": "https://twitter.com/elonmusk/status/1467965723876208640"
+    },
+    "Post 20": {
+        "Text": "Apply now to work on Tesla Artificial Intelligence & Autopilot and join our mission to accelerate the world\u2019s transition to sustainable energy.\n",
+        "Commentators": {
+            "Commentator 0": "https://twitter.com/TOPDOGE007",
+            "Commentator 1": "https://twitter.com/akrumxx",
+            "Commentator 2": "https://twitter.com/MrsCaliKisses"
+        },
+        "Link": "https://twitter.com/elonmusk/status/1467731226609999872"
+    }
+}

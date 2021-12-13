@@ -3,11 +3,13 @@ from selenium.webdriver.chrome.service import Service
 from time import sleep
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+import json
 
 
 class Post:
     """
-    Класс для удобства вывода поста в строковый формат
+    Класс поста для удобства
     """
     def __init__(self, text, commentators):
         self.text = text
@@ -15,8 +17,18 @@ class Post:
 
     def __str__(self):
         return f"\n-= Post =-\n{self.text}\n" \
-               f"-= ==== =-\n-= Comments =-:\n" + "\n".join(str(item) for item in self.commentators) + \
+               f"-= ==== =-\n-= Commentators =-:\n" + "\n".join(str(item) for item in self.commentators) + \
                "\n-= ==== =-\n"
+
+    def save_to_dict(self):
+        dict__ = {}
+        dict_ = {'Text': self.text}
+
+        for i in range(len(self.commentators)):
+            dict__[f"Commentator {i}"] = self.commentators[i]
+        dict_['Commentators'] = dict__
+
+        return dict_
 
 
 class Page:
@@ -37,7 +49,7 @@ def save_data(browser):
     return page
 
 
-def get_data(url):
+def get_data(url, pages_count):
     """
     Основной блок управления браузером
     :param url: ссылка на страницу
@@ -46,8 +58,9 @@ def get_data(url):
     _options = webdriver.ChromeOptions()
     browser = webdriver.Chrome(service=_service, options=_options)
     browser.maximize_window()
-    posts = []
+    posts_rendered = []
     pages = []
+    post_urls = []
     y_old = 500
 
     try:
@@ -55,51 +68,64 @@ def get_data(url):
         sleep(2.5)
         html = browser.find_element("tag name", 'html')
 
-        # Цикл for i in range(10) и дальнейшее использование i в качестве индекса объекта списка постов
-        # - костыль для упрощения кода, правильнее перебирать все прогруженные страницы с самого начала,
-        # чтобы не допустить пропуска постов, поскольку если твит ушел далеко вверх по ленте,
-        # при обновлении страницы он не подгружается
-
-        # На момент написания такой метод работал для 10 постов без пропусков, были пропуски, начиная с 12
-        # При необходимости написания программы для большего числа постов, этот метод использовать нельзя,
-        # и пришлось бы перебирать все прогруженные посты полностью
-
-        for i in range(10):
+        # Основной цикл
+        for i in range(pages_count):
             posts = browser.find_elements("xpath", "//div[@class='css-1dbjc4n r-k4xj1c r-18u37iz r-1wtj0ep']")
-            y = posts[i].location.get('y')
+
+            # Перебор всех прогруженных постов для проверки, были ли они уже обработаны
+            soup = BeautifulSoup(browser.page_source, "html.parser")
+            posts_soup = soup.find_all("article", {"data-testid": "tweet"})
+            counter = 0
+            for post in posts_soup:
+                post_href = post.find("a", {"class": "css-4rbku5 css-18t94o4 css-901oao r-9ilb82 r-1loqt21 r-1q142lx "
+                                                     "r-37j5jr r-a023e6 r-16dba41 r-rjixqe r-bcqeeo r-3s2u2q r-qvutc0"},
+                                      href=True)
+                if post_href['href'] not in post_urls:
+                    post_urls.append(post_href['href'])
+                    break
+                else:
+                    counter += 1
+
+            # Улавливаем координаты следующего для обработки поста
+            y = posts[counter].location.get('y')
 
             # Пролистываем страницу вниз с помощью клавиши
             # Эмпирическим путем определил, что одно нажатие клавиши вниз пролистывает страницу вниз
             # Примерно на 37 пикселей
             for _ in range((y - y_old) // 37):
                 html.send_keys(Keys.DOWN)
-                sleep(0.2)
+                sleep(0.15)
             y_old = y
-            sleep(1)
+            sleep(0.25)
 
             # Переходим к посту
-            posts[i].click()
-            sleep(2.5)
+            posts[counter].click()
+            sleep(2)
 
             # Сохраняем пост и выходим обратно в ленту
             pages.append(save_data(browser))
             browser.execute_script("window.history.go(-1)")
-            sleep(0.5)
+            sleep(0.25)
 
             html = browser.find_element("tag name", 'html')
-            sleep(0.5)
+            sleep(0.25)
 
     except Exception as ex:
         print(ex)
-        print("Произошла ошибка: пост находится за пределами экрана/миссклик по посту")
 
     finally:
         # Все успешно сохраненные посты выводятся в файл output.txt
+        dict_ = {}
+        count = 0
         for item in pages:
-            posts.append(parser(item))
+            posts_rendered.append(parser(item))
         with open("output.txt", "w") as file:
-            for post in posts:
-                file.write(str(post))
+            for post in posts_rendered:
+                count += 1
+                dict_[f"Post {count}"] = post.save_to_dict()
+                dict_[f"Post {count}"]["Link"] = "https://twitter.com" + post_urls[count-1]
+
+            file.write(json.dumps(dict_, indent=4))
 
         browser.close()
         browser.quit()
@@ -134,4 +160,5 @@ def parser(page):
 
 
 if __name__ == '__main__':
-    get_data("https://twitter.com/elonmusk")
+    PAGES_COUNT = 20
+    get_data("https://twitter.com/elonmusk", PAGES_COUNT)
