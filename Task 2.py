@@ -25,7 +25,7 @@ class Post:
         dict_ = {'Text': self.text}
 
         for i in range(len(self.commentators)):
-            dict__[f"Commentator {i}"] = self.commentators[i]
+            dict__[f"Commentator {i+1}"] = self.commentators[i]
         dict_['Commentators'] = dict__
 
         return dict_
@@ -154,11 +154,13 @@ def parser(page):
                 right_text = text
 
     post_text = right_text[-10].text
+    if post_text == "@elonmusk":
+        post_text = ''
     user_profiles = user_profiles[:3]
 
     return Post(post_text, user_profiles)
 
 
 if __name__ == '__main__':
-    PAGES_COUNT = 20
+    PAGES_COUNT = 10
     get_data("https://twitter.com/elonmusk", PAGES_COUNT)
