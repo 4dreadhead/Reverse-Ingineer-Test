@@ -1,3 +1,4 @@
 selenium
 selenium_stealth
 bs4
+requests

@@ -2,17 +2,17 @@
     "Post 1": {
         "Text": "@elonmusk",
         "Commentators": {
-            "Commentator 0": "https://twitter.com/samir",
-            "Commentator 1": "https://twitter.com/raymond_saint",
-            "Commentator 2": "https://twitter.com/A7imd"
+            "Commentator 0": "https://twitter.com/orangie",
+            "Commentator 1": "https://twitter.com/samir",
+            "Commentator 2": "https://twitter.com/raymond_saint"
         },
         "Link": "https://twitter.com/elonmusk/status/1470157804304572420"
     },
     "Post 2": {
         "Text": "@elonmusk",
         "Commentators": {
-            "Commentator 0": "https://twitter.com/Ziyaggy",
-            "Commentator 1": "https://twitter.com/Scorrdo",
+            "Commentator 0": "https://twitter.com/Scorrdo",
+            "Commentator 1": "https://twitter.com/MuyahLawrence",
             "Commentator 2": "https://twitter.com/ahmadtariq07"
         },
         "Link": "https://twitter.com/elonmusk/status/1470012460509937679"
@@ -22,7 +22,7 @@
         "Commentators": {
             "Commentator 0": "https://twitter.com/TKCnohitokoto",
             "Commentator 1": "https://twitter.com/TKCnohitokoto",
-            "Commentator 2": "https://twitter.com/theorzur"
+            "Commentator 2": "https://twitter.com/Chico26600850"
         },
         "Link": "https://twitter.com/elonmusk/status/1470007920846852104"
     },
@@ -36,7 +36,7 @@
         "Link": "https://twitter.com/elonmusk/status/1470007410521780226"
     },
     "Post 5": {
-        "Text": "10:44 AM \u00b7 12 \u0434\u0435\u043a. 2021 \u0433.",
+        "Text": " episode with Dan Carlin. Hope you like it.",
         "Commentators": {
             "Commentator 0": "https://twitter.com/Helloimmorgan",
             "Commentator 1": "https://twitter.com/redban",
@@ -49,7 +49,7 @@
         "Commentators": {
             "Commentator 0": "https://twitter.com/_StephanieMyers",
             "Commentator 1": "https://twitter.com/VxzD500",
-            "Commentator 2": "https://twitter.com/A7imd"
+            "Commentator 2": "https://twitter.com/motjuuh"
         },
         "Link": "https://twitter.com/elonmusk/status/1469762144786919427"
     },
@@ -85,13 +85,17 @@
         "Commentators": {
             "Commentator 0": "https://twitter.com/SherijenningsUn",
             "Commentator 1": "https://twitter.com/HotHeadCandles",
-            "Commentator 2": "https://twitter.com/_juho_lee_"
+            "Commentator 2": "https://twitter.com/Sadcrib"
         },
         "Link": "https://twitter.com/elonmusk/status/1469153995428085762"
     },
     "Post 11": {
         "Text": "@elonmusk",
-        "Commentators": {},
+        "Commentators": {
+            "Commentator 0": "https://twitter.com/KennyOrellana9",
+            "Commentator 1": "https://twitter.com/KyleSherman",
+            "Commentator 2": "https://twitter.com/unusual_whales"
+        },
         "Link": "https://twitter.com/elonmusk/status/1469137649269153799"
     },
     "Post 12": {
@@ -107,8 +111,8 @@
         "Text": "NASA's Launch Services Program",
         "Commentators": {
             "Commentator 0": "https://twitter.com/SpaceX",
-            "Commentator 1": "https://twitter.com/Bhoopen09877798",
-            "Commentator 2": "https://twitter.com/astrajamz"
+            "Commentator 1": "https://twitter.com/star95011",
+            "Commentator 2": "https://twitter.com/Bhoopen09877798"
         },
         "Link": "https://twitter.com/SpaceX/status/1468701923914104834"
     },
@@ -134,8 +138,8 @@
         "Text": "There is a lot of accounting trickery in this bill that isn\u2019t being disclosed to the public",
         "Commentators": {
             "Commentator 0": "https://twitter.com/pumpkinflop",
-            "Commentator 1": "https://twitter.com/efraser77",
-            "Commentator 2": "https://twitter.com/markeasterbrook"
+            "Commentator 1": "https://twitter.com/kaylawi80565997",
+            "Commentator 2": "https://twitter.com/efraser77"
         },
         "Link": "https://twitter.com/elonmusk/status/1468685044239814666"
     },
@@ -170,8 +174,8 @@
         "Text": "Apply now to work on Tesla Artificial Intelligence & Autopilot and join our mission to accelerate the world\u2019s transition to sustainable energy.\n",
         "Commentators": {
             "Commentator 0": "https://twitter.com/TOPDOGE007",
-            "Commentator 1": "https://twitter.com/akrumxx",
-            "Commentator 2": "https://twitter.com/MrsCaliKisses"
+            "Commentator 1": "https://twitter.com/mischenn3",
+            "Commentator 2": "https://twitter.com/akrumxx"
         },
         "Link": "https://twitter.com/elonmusk/status/1467731226609999872"
     }
