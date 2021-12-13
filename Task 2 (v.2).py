@@ -1,5 +1,4 @@
 import requests
-from bs4 import BeautifulSoup
 import json
 
 
@@ -26,7 +25,7 @@ class Post:
         dict_ = {'Text': self.text}
 
         for i in range(len(self.commentators)):
-            dict__[f"Commentator {i}"] = "https://twitter.com/" + self.commentators[i]
+            dict__[f"Commentator {i+1}"] = "https://twitter.com/" + self.commentators[i]
         dict_['Commentators'] = dict__
 
         return dict_
@@ -35,7 +34,7 @@ class Post:
 def get_one_post(post, headers):
     """
     Выполняет get запрос на твиттер по номеру поста'
-    При успешном запросе в консоли будет выведет response 200
+    При успешном запросе в консоли будет выведено <response [200]>
     :param post: Пост
     :param headers: Заголовки запроса
     :return: возвращает ответ в json формате
@@ -156,19 +155,20 @@ if __name__ == '__main__':
     # Заголовки
     #
     # Для того, чтобы не вылетала ошибка 403, в браузере взял заголовки сессии
+    #
     # - cookie
     # - x-csrf-token
     # - x-guest-token
     # - authorization
     #
-    # Без них ответа не дождаться, если переставали работать эти куки и токены, я чистил кукри браузера и вводил сюда
+    # Без них ответа не дождаться, если переставали работать эти куки и токены, я чистил куки браузера и вводил сюда
     # новые значения заголовков, как бы имитируя свою новую сессию с браузера
     HEADERS = {
         'authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA',
-        'x-csrf-token': '65bda309a86b7c2ba599add2b884eecb',
-        'x-guest-token': '1470341330631073794',
+        'x-csrf-token': '93c9ec755358e02c6b8f5b7b64cff925',
+        'x-guest-token': '1470432104920059914',
         'user-agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36",
-        'cookie': 'guest_id_marketing=v1%3A163879710358226793; guest_id_ads=v1%3A163879710358226793; personalization_id="v1_ScVokRvGE0+FFJ41DSInmA=="; guest_id=v1%3A163879710358226793; external_referer=padhuUp37zjgzgv1mFWxJ12Ozwit7owX|0|ziZgIoZIK4nlMKUVLq9KcnBFms0d9TqBqrE%2FyjvSFlFJR45yIlYF%2Bw%3D%3D; _ga=GA1.2.2039911237.1638797106; ct0=65bda309a86b7c2ba599add2b884eecb; gt=1470341330631073794; _gid=GA1.2.554430793.1639391668; _gat=1'
+        'cookie': 'guest_id_marketing=v1%3A163879710358226793; guest_id_ads=v1%3A163879710358226793; personalization_id="v1_ScVokRvGE0+FFJ41DSInmA=="; guest_id=v1%3A163879710358226793; _ga=GA1.2.2039911237.1638797106; ct0=93c9ec755358e02c6b8f5b7b64cff925; gt=1470432104920059914; _gid=GA1.2.1457361709.1639413310; _gat=1'
     }
 
     # Запускаем процесс
