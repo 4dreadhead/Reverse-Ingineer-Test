@@ -210,7 +210,7 @@ def save_data_in_file(posts):
         for post in posts:
             count += 1
             dict_[f"Post {count}"] = post.save_to_dict()
-            dict_[f"Post {count}"]["Link"] = "https://twitter.com/status/" + post.url
+            dict_[f"Post {count}"]["Link"] = "https://twitter.com/elonmusk/status/" + post.url
         file.write(json.dumps(dict_, indent=4))
 
 
