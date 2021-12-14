@@ -142,8 +142,6 @@ def main_page_parser():
     posts = []
 
     # По заданным ключам добираемся до номера поста, и заодно забираем текст поста
-    with open('my_page.txt', 'w') as file:
-        file.write(json.dumps(parsed_string, indent=4))
     max_posts = 10
     for index in range(max_posts):
         link = str(post_list[index]['sortIndex'])
@@ -177,8 +175,6 @@ def tweet_parser(posts):
 
         # Переводим в dict
         parsed_string = json.loads(json_.text)
-        with open('my_page.txt', 'w') as file:
-            file.write(json.dumps(parsed_string, indent=4))
         post_list = parsed_string["data"]["threaded_conversation_with_injections"]["instructions"][0]["entries"]
 
         # Забираем первые 3 ссылки на комментаторов, ищем их по ключам
