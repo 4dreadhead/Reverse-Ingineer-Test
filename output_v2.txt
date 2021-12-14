@@ -6,7 +6,7 @@
             "Commentator 2": "https://twitter.com/Poweropedia1",
             "Commentator 3": "https://twitter.com/Cryptocito"
         },
-        "Link": "https://twitter.com/status/1470703708677840896"
+        "Link": "https://twitter.com/elonmusk/status/1470703708677840896"
     },
     "Post 2": {
         "Text": "Will also be important for Mars",
@@ -15,16 +15,16 @@
             "Commentator 2": "https://twitter.com/dingdong290",
             "Commentator 3": "https://twitter.com/doubleJmsu"
         },
-        "Link": "https://twitter.com/status/1470519361295335425"
+        "Link": "https://twitter.com/elonmusk/status/1470519361295335425"
     },
     "Post 3": {
         "Text": "SpaceX is starting a program to take CO2 out of atmosphere &amp; turn it into rocket fuel. Please join if interested.",
         "Commentators": {
             "Commentator 1": "https://twitter.com/OfficialSPGB",
             "Commentator 2": "https://twitter.com/TheSeekerFN",
-            "Commentator 3": "https://twitter.com/Boszfn"
+            "Commentator 3": "https://twitter.com/j4co117"
         },
-        "Link": "https://twitter.com/status/1470519292651352070"
+        "Link": "https://twitter.com/elonmusk/status/1470519292651352070"
     },
     "Post 4": {
         "Text": "",
@@ -33,34 +33,34 @@
             "Commentator 2": "https://twitter.com/orangie",
             "Commentator 3": "https://twitter.com/samir"
         },
-        "Link": "https://twitter.com/status/1470157804304572420"
+        "Link": "https://twitter.com/elonmusk/status/1470157804304572420"
     },
     "Post 5": {
         "Text": "",
         "Commentators": {
             "Commentator 1": "https://twitter.com/Scorrdo",
-            "Commentator 2": "https://twitter.com/YunusEmreeeet",
-            "Commentator 3": "https://twitter.com/ahmadtariq07"
+            "Commentator 2": "https://twitter.com/ahmadtariq07",
+            "Commentator 3": "https://twitter.com/AdamSinger"
         },
-        "Link": "https://twitter.com/status/1470012460509937679"
+        "Link": "https://twitter.com/elonmusk/status/1470012460509937679"
     },
     "Post 6": {
         "Text": "Sine qua non non",
         "Commentators": {
             "Commentator 1": "https://twitter.com/TKCnohitokoto",
-            "Commentator 2": "https://twitter.com/MdEroi",
-            "Commentator 3": "https://twitter.com/Scorrdo"
+            "Commentator 2": "https://twitter.com/Chico26600850",
+            "Commentator 3": "https://twitter.com/LucWilli"
         },
-        "Link": "https://twitter.com/status/1470007920846852104"
+        "Link": "https://twitter.com/elonmusk/status/1470007920846852104"
     },
     "Post 7": {
         "Text": "Sorry",
         "Commentators": {
             "Commentator 1": "https://twitter.com/TKCnohitokoto",
-            "Commentator 2": "https://twitter.com/tdmaneCFC",
-            "Commentator 3": "https://twitter.com/denationalise"
+            "Commentator 2": "https://twitter.com/__sherrif",
+            "Commentator 3": "https://twitter.com/EosExar"
         },
-        "Link": "https://twitter.com/status/1470007410521780226"
+        "Link": "https://twitter.com/elonmusk/status/1470007410521780226"
     },
     "Post 8": {
         "Text": "Just did a @HardcoreHistory episode with Dan Carlin. Hope you like it.",
@@ -69,7 +69,7 @@
             "Commentator 2": "https://twitter.com/redban",
             "Commentator 3": "https://twitter.com/Helloimmorgan"
         },
-        "Link": "https://twitter.com/status/1469875780901609472"
+        "Link": "https://twitter.com/elonmusk/status/1469875780901609472"
     },
     "Post 9": {
         "Text": "\u201cNo better friend, no worse enemy\u201d",
@@ -78,6 +78,6 @@
             "Commentator 2": "https://twitter.com/VxzD_Crypto",
             "Commentator 3": "https://twitter.com/A7imd"
         },
-        "Link": "https://twitter.com/status/1469762144786919427"
+        "Link": "https://twitter.com/elonmusk/status/1469762144786919427"
     }
 }
