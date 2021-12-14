@@ -182,6 +182,9 @@ def tweet_parser(posts):
             if 'items' in post_list[index]["content"]:
                 if 'tweet_results' not in post_list[index]["content"]["items"][index_]['item']["itemContent"]:
                     index_ += 1
+                    if index_ == len(post_list[index]["content"]["items"]):
+                        index += 1
+                        index_ = 0
                     continue
                 commentator_link = \
                 post_list[index]["content"]["items"][index_]['item']["itemContent"]["tweet_results"]["result"]["core"][
