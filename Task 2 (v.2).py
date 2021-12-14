@@ -1,5 +1,6 @@
 import requests
 import json
+import urllib
 
 
 class Post:
@@ -31,51 +32,110 @@ class Post:
         return dict_
 
 
-def get_one_post(post, headers):
+def variables_for_url(param, post):
     """
-    Выполняет get запрос на твиттер по номеру поста'
-    При успешном запросе в консоли будет выведено <response [200]>
-    :param post: Пост
-    :param headers: Заголовки запроса
+    Возвращает словарь, который содержит параметры url для запросов
+    :param param: 'TweetDetail' или 'UserTweets', в зависимости от параметра возвращает нужный словарь
+    :param post: пост, либо None
+    :return: возвращает нужный словарь
+    """
+    if param == 'TweetDetail':
+        # Для TweetDetail
+        variables = {
+            "focalTweetId": f"{post.url}",
+            "referrer": "profile",
+            "with_rux_injections": False,
+            "includePromotedContent": True,
+            "withCommunity": True,
+            "withQuickPromoteEligibilityTweetFields": True,
+            "withTweetQuoteCount": True,
+            "withBirdwatchNotes": False,
+            "withSuperFollowsUserFields": True,
+            "withBirdwatchPivots": False,
+            "withDownvotePerspective": False,
+            "withReactionsMetadata": False,
+            "withReactionsPerspective": False,
+            "withSuperFollowsTweetFields": True,
+            "withVoice": True,
+            "withV2Timeline": False
+        }
+    else:
+        # Для UserTweets
+        variables = {
+            "userId": "44196397",
+            "count": 20,
+            "withTweetQuoteCount": True,
+            "includePromotedContent": True,
+            "withQuickPromoteEligibilityTweetFields": True,
+            "withSuperFollowsUserFields": True,
+            "withBirdwatchPivots": False,
+            "withDownvotePerspective": False,
+            "withReactionsMetadata": False,
+            "withReactionsPerspective": False,
+            "withSuperFollowsTweetFields": True,
+            "withVoice": True,
+            "withV2Timeline": False
+        }
+    return variables
+
+
+def get_headers_and_session_cookies():
+    """
+    Делаем запрос на твиттер для установления куков, сохраняем значение для идентификации 'x-guest-token'
+    :return: Возвращает необходимые для идентификации сессии заголовки
+    """
+    # Делаем запрос, куки автоматически записываются в response.cookies
+    link = 'https://twitter.com/elonmusk'
+    response = SESSION.get(link)
+    print(f"status: {response}, request: get({link})")
+
+    headers = {
+        # Заголовок для авторизации, одинаковый для всех сеансов, поэтому оставил его как константу
+        'authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I'
+                         '8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA',
+    }
+
+    # Делаем запрос для получения токена 'x-guest-token'
+    link = 'https://api.twitter.com/1.1/guest/activate.json'
+    response = SESSION.post(link, headers=headers)
+    print(f"status: {response}, request: post({link})")
+
+    # Добавляем в заголовки необходимый токен
+    dict_ = json.loads(response.content)
+    headers['x-guest-token'] = dict_['guest_token']
+
+    return headers
+
+
+def get_response(param, post=None):
+    """
+    Выполняет get запрос, возвращает ответ
+    :param param: параметр имеет 1 из 2 значений: 'UserTweets' или 'TweetDetail', чтобы выполнить необходимый запрос
+    :param post: если param имеет значение 'TweetDetail', передается твит
     :return: возвращает ответ в json формате
     """
-    json_ = requests.get(f"https://twitter.com/i/api/graphql/WCPfjCbV22zfq-_pPrAGeQ/TweetDetail?variables=%7B%22"
-                         f"focalTweetId%22%3A%22{str(post.url)}%22%2C%22referrer%22%3A%22profile%22%2C%22with_"
-                         f"rux_injections%22%3Afalse%2C%22includePromotedContent%22%3Atrue%2C%22withCommunity%"
-                         f"22%3Atrue%2C%22withQuickPromoteEligibilityTweetFields%22%3Atrue%2C%22withTweetQuote"
-                         f"Count%22%3Atrue%2C%22withBirdwatchNotes%22%3Afalse%2C%22withSuperFollowsUserFields%"
-                         f"22%3Atrue%2C%22withUserResults%22%3Atrue%2C%22withBirdwatchPivots%22%3Afalse%2C%22w"
-                         f"ithDownvotePerspective%22%3Afalse%2C%22withReactionsMetadata%22%3Afalse%2C%22with"
-                         f"ReactionsPerspective%22%3Afalse%2C%22withSuperFollowsTweetFields%22%3Atrue%2C%22with"
-                         f"Voice%22%3Atrue%2C%22withV2Timeline%22%3Afalse%7D", headers=headers)
-    print(json_)
+    # Получаем значения параметров url для запросов
+    variables = variables_for_url(param, post)
+    variables_encoded = json.dumps(variables)
+
+    # По значению param и variables_encoded генерируем url
+    if param == 'UserTweets':
+        link = 'https://twitter.com/i/api/graphql/mTSXUZHwc3vjzSE94Xsttg/UserTweets?variables=' + variables_encoded
+    else:
+        link = 'https://twitter.com/i/api/graphql/MwoNOssr8CR7CxUWbBQO9w/TweetDetail?variables=' + variables_encoded
+
+    # Делаем запрос, выводим в терминал статус
+    json_ = SESSION.get(link, headers=HEADERS)
+    print(f"status: {json_}, request: get({link})")
     return json_
 
 
-def get_all_posts(headers):
-    """
-    Выполняет get запрос для получения списка постов
-    :param headers: Заголовки запроса
-    :return: возвращает ответ в json формате
-    """
-    jsn_ = requests.get("https://twitter.com/i/api/graphql/mTSXUZHwc3vjzSE94Xsttg/UserTweets?variables=%7B%22"
-                        "userId%22%3A%2244196397%22%2C%22count%22%3A20%2C%22withTweetQuoteCount%22%3Atrue%2C%22"
-                        "includePromotedContent%22%3Atrue%2C%22withQuickPromoteEligibilityTweetFields%22%3Atrue%2C%22wi"
-                        "thSuperFollowsUserFields%22%3Atrue%2C%22withUserResults%22%3Atrue%2C%22withBirdwatchPivots%22%"
-                        "3Afalse%2C%22withDownvotePerspective%22%3Afalse%2C%22withReactionsMetadata%22%3Afalse%2C%22"
-                        "withReactionsPerspective%22%3Afalse%2C%22withSuperFollowsTweetFields%22%3Atrue%2C%22withVoice%"
-                        "22%3Atrue%2C%22withV2Timeline%22%3Afalse%7D", headers=headers)
-    print(jsn_)
-    return jsn_
-
-
-def main_page_parser(headers):
+def main_page_parser():
     """
     Основная функция, выполняется парсинг главной страницы и каждого из постов
-    :param headers: Заголовки запроса
     """
     # Преобразуем данные json в объект Python "dict"
-    json_ = get_all_posts(headers)
+    json_ = get_response('UserTweets')
     parsed_string = json.loads(json_.content)
     post_list = parsed_string['data']['user']['result']['timeline']['timeline']['instructions'][0]['entries']
 
@@ -83,24 +143,29 @@ def main_page_parser(headers):
 
     # По заданным ключам добираемся до номера поста, и заодно забираем текст поста (Ключи подбирал в файле page.html)
     # page.html - сохраненный ответ в json формате get запроса на сервер
-    for index in range(10):
+    with open('my_page.txt', 'w') as file:
+        file.write(json.dumps(parsed_string, indent=4))
+    max_posts = 10
+    for index in range(max_posts):
         link = str(post_list[index]['sortIndex'])
-        if 'full_text' in post_list[index]['content']['itemContent']['tweet_results']['result']['legacy']:
-            text = post_list[index]['content']['itemContent']['tweet_results']['result']['legacy']['full_text']
-            text = " ".join(x for x in text.split() if not x.startswith("https://t.co"))
+        if 'itemContent' in post_list[index]['content']:
+            if 'full_text' in post_list[index]['content']['itemContent']['tweet_results']['result']['legacy']:
+                text = post_list[index]['content']['itemContent']['tweet_results']['result']['legacy']['full_text']
+                text = " ".join(x for x in text.split() if not x.startswith("https://t.co"))
+            else:
+                text = ''
+            posts.append(Post(link, text, ['', '', '']))
         else:
-            text = ''
-        posts.append(Post(link, text, ['', '', '']))
+            max_posts += 1
 
     # Запускаем парсер для получения ссылок на комментаторов
-    tweet_parser(posts, headers)
+    tweet_parser(posts)
 
 
-def tweet_parser(posts, headers):
+def tweet_parser(posts):
     """
     Парсит каждый твит и сохраняет ссылки на комментаторов
     :param posts: Список твитов
-    :param headers: Заголовки запроса
     """
     # Начинаем перебор постов
     for post in posts:
@@ -109,10 +174,12 @@ def tweet_parser(posts, headers):
         index_ = 0
 
         # Делаем запрос, получаем ответ
-        json_ = get_one_post(post, headers)
+        json_ = get_response('TweetDetail', post)
 
         # Переводим в dict
         parsed_string = json.loads(json_.text)
+        with open('my_page.txt', 'w') as file:
+            file.write(json.dumps(parsed_string, indent=4))
         post_list = parsed_string["data"]["threaded_conversation_with_injections"]["instructions"][0]["entries"]
 
         # Забираем первые 3 ссылки на комментаторов, ищем их по ключам (Ключи брал из tweet.html)
@@ -144,7 +211,6 @@ def save_data_in_file(posts):
     count = 0
     with open("output_v2.txt", "w") as file:
         for post in posts:
-            print(post)
             count += 1
             dict_[f"Post {count}"] = post.save_to_dict()
             dict_[f"Post {count}"]["Link"] = "https://twitter.com/status/" + post.url
@@ -152,27 +218,12 @@ def save_data_in_file(posts):
 
 
 if __name__ == '__main__':
-    # Заголовки
-    #
-    # Для того, чтобы не вылетала ошибка 403, в браузере взял заголовки сессии
-    #
-    # - cookie
-    # - x-csrf-token
-    # - x-guest-token
-    # - authorization
-    #
-    # Без них ответа не дождаться, если переставали работать эти куки и токены, я чистил куки браузера и вводил сюда
-    # новые значения заголовков, как бы имитируя свою новую сессию с браузера
-    HEADERS = {
-        'authorization': 'Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA',
-        'x-csrf-token': '93c9ec755358e02c6b8f5b7b64cff925',
-        'x-guest-token': '1470432104920059914',
-        'user-agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36",
-        'cookie': 'guest_id_marketing=v1%3A163879710358226793; guest_id_ads=v1%3A163879710358226793; personalization_id="v1_ScVokRvGE0+FFJ41DSInmA=="; guest_id=v1%3A163879710358226793; _ga=GA1.2.2039911237.1638797106; ct0=93c9ec755358e02c6b8f5b7b64cff925; gt=1470432104920059914; _gid=GA1.2.1457361709.1639413310; _gat=1'
-    }
-
+    # Создаем экземпляр класса Session, который при выполнении запросов сохраняет cookie
+    SESSION = requests.Session()
+    # Определяем заголовки и сохраняем cookie
+    HEADERS = get_headers_and_session_cookies()
     # Запускаем процесс
     try:
-        main_page_parser(HEADERS)
+        main_page_parser()
     except Exception as ex:
         print(ex)
