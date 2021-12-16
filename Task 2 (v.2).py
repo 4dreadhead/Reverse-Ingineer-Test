@@ -177,7 +177,7 @@ def tweet_parser(posts):
         post_list = parsed_string["data"]["threaded_conversation_with_injections"]["instructions"][0]["entries"]
 
         # Забираем первые 3 ссылки на комментаторов, ищем их по ключам
-        while len(commentators) < 3:
+        while len(commentators) < 3 and len(post_list) > index:
             commentator_link = 'elonmusk'
             if 'items' in post_list[index]["content"]:
                 if 'tweet_results' not in post_list[index]["content"]["items"][index_]['item']["itemContent"]:
